@@ -27,7 +27,6 @@ import re
 import random
 from PyQt5.QtCore import QThread,pyqtSignal
 
-from websocket import data
 persona='''
 
 
