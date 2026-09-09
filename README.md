@@ -2,6 +2,13 @@
 
 ### HOW TO RUN ?
 ```bash
-pip install fastapi uvicorn playwright && playwright install chromium
-
+pip install -r req.txt
+```
+<br>
+```bash
+playwright install chromium
+```
+<br>
+```bash
+python main.py
 ```
