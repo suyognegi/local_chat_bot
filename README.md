@@ -17,4 +17,4 @@ btw have ball knowledge of python (i meant have python on your system & have ven
 
 
 
-<!--Remind (me) : Later add auto retry after failing + auto reconnect >
+> Remind (me) : Later add auto retry after failing + auto reconnect 
