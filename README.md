@@ -13,4 +13,4 @@ python main.py
 <br>
 <br>
 
-btw have ball knowledge of python (i mean have python on your system & have venv activated
+btw have ball knowledge of python (i meant have python on your system & have venv activated
