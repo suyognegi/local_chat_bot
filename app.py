@@ -1,7 +1,3 @@
-
-
-
-
 import random
 
 from trnsport_list1234 import deep_lists,claude_lists
@@ -22,10 +18,8 @@ from PyQt5.QtWidgets import QStackedWidget
 from PyQt5.uic import loadUi
 import re
 
-
-
-import random
-from PyQt5.QtCore import QThread,pyqtSignal
+# Define the base directory (the folder containing this script)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 persona='''
 
@@ -233,13 +227,8 @@ class decodr_effect(QThread):
 </p>
         '''
 
-
         self.chars =("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*+-_=<>?/\\|~")
-
-
         self.glow_colors=("#0f6b78","#17969f","#3fc3cb","#0a4d55","#5fe0e6")
-
-
         self.animated_lines=3
 
     def run(self):
@@ -251,7 +240,6 @@ class decodr_effect(QThread):
             part_line.append(line_no)
             if part.startswith("<") and re.search(r'<br\s*/?>' ,part,re.I):
                 line_no+=1
-
 
         positions=[]
         for part_index,part in enumerate(parts):
@@ -266,7 +254,6 @@ class decodr_effect(QThread):
 
         total=len(positions)
 
-
         cells=[list(part)for part in parts]
 
         def scramble_markup():
@@ -278,7 +265,6 @@ class decodr_effect(QThread):
             out=[]
             for i,part in enumerate(parts):
                 out.append(part if part.startswith("<")else"".join(cells[i]))
-
             return "".join(out)
 
         def pick_biased(pool,k):
@@ -291,13 +277,10 @@ class decodr_effect(QThread):
                 pick=min(candidates,key=lambda p:(p[0],p[1]))
                 chosen.append(pick)
                 pool.remove(pick)
-
             return chosen
-
 
         for part_index,char_index in positions:
             cells[part_index][char_index]=scramble_markup()
-
 
         decoded=set()
         self.chaging_partial_signal.emit(render())
@@ -311,11 +294,9 @@ class decodr_effect(QThread):
                 cells[part_index][char_index] =parts[part_index][char_index]
                 decoded.add((part_index,char_index))
 
-
             for part_index,char_index in positions:
                 if (part_index,char_index) not in decoded:
                     cells[part_index][char_index]=scramble_markup()
-
 
             self.chaging_partial_signal.emit(render())
             time.sleep(0.1)
@@ -337,8 +318,6 @@ class chat_bot_thread(QThread):
         self.is_ready=False
         self.pending_data=None
         self.is_processing=False
-
-
 
         self.playwright=None
         self.browser=None
@@ -395,11 +374,8 @@ class chat_bot_thread(QThread):
             self.error_occurred.emit(f"Error: {str(e)}")
             self.status_update.emit("all bad and chat bot not running")
 
-
-
         finally:
             self.is_processing=False
-
 
     def send_message(self,data):
         if not self.is_ready:
@@ -497,7 +473,6 @@ class chat_bot_thread(QThread):
         finally:
             self.is_processing= False
 
-
     def strip_anchor_tags(self,html:str) -> str:
         return re.sub(r'<a\b[^>]*>.*?</a>','',html,flags=re.DOTALL|re.IGNORECASE)
     def init_the_browser_n_stuff(self):
@@ -541,16 +516,8 @@ class chat_bot_thread(QThread):
 
                 print(f"navigation error on attempt {trys} => {e}")
 
-
-
-
             if trys < max_retries:
                 self.msleep(2000)
-
-
-
-
-
 
         self.close_browser()
         return False
@@ -585,15 +552,15 @@ class chat_bot_ai(QMainWindow):
 
         self.send_ai_button.setEnabled(False)
 
-        self.BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        self.shuffle_path=os.path.join(self.BASE_DIR,"svg_icons","shuffle.svg")
-        self.send_path =os.path.join(self.BASE_DIR,"svg_icons","send2.svg")
-        self.robo_path=os.path.join(self.BASE_DIR,"svg_icons","robo.svg")
+        # Use the global BASE_DIR defined at the top of this file
+        self.BASE_DIR = BASE_DIR
+        self.shuffle_path = os.path.join(self.BASE_DIR, "svg_icons", "shuffle.svg")
+        self.send_path = os.path.join(self.BASE_DIR, "svg_icons", "send2.svg")
+        self.robo_path = os.path.join(self.BASE_DIR, "svg_icons", "robo.svg")
         self.set_svg_icon_and_color(self.www__,self.robo_path,'#0F6B78',33)
         self.set_svg_icon_and_color(self.chat_suffle_button,self.shuffle_path,"#6B7280",12)
         self.set_svg_icon_and_color(self.send_ai_button,self.send_path,"#fefefe",30)
         self.chat_suffle_button.installEventFilter(self)
-
 
         self.ai_chat_plainTextEdit.textChanged.connect(self.ai_chat_changed)
         self.l1,self.l2,self.l3,self.l4=random.choice([claude_lists()])
@@ -673,35 +640,26 @@ class chat_bot_ai(QMainWindow):
         self.chat_bot_thread_obj.final_response.connect(self.chat_bot_thread_final_response_verdict)
         self.chat_bot_thread_obj.error_occurred.connect(self.chat_bot_thread_error_occurred_verdict)
 
-
         self.send_ai_button.clicked.connect(self.send_user_message)
         self.ai_chat_plainTextEdit.installEventFilter(self)
         self.index=0
 
         self.ai_list_view.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-
         self.ai_list_view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
         self.ai_list_view.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
         self.ai_list_view.verticalScrollBar().setSingleStep(10)
-
 
         self.auto_scroll_bottom_flag=True
 
         scrollbar=self.ai_list_view.verticalScrollBar()
-
         self.ai_list_view.verticalScrollBar().valueChanged.connect(self.scroll_position_changed)
 
         self.is_browser_free =False
         self.is_generating_resp = False
 
         self.decoder=decodr_effect()
-
         self.decoder.chaging_partial_signal.connect(self.static_textBrowser.setHtml)
-
         self.decoder.final_signal.connect(self.static_textBrowser.setHtml)
-
         self.decoder.start()
         self.set_shadow_label_or_frame(self.white_bg_label,shadow='low',color_scheme='light')
 
@@ -721,10 +679,8 @@ class chat_bot_ai(QMainWindow):
             self.ai_chat_plainTextEdit.clear()
             self.chat_bot_thread_obj.send_message({'text':message,'index':self.index,'is_special_case':False})
             self.push_a_single_input_label({'text':message,'index':self.index,'is_special_case' : False})
-
             self.is_generating_resp = True
             self.send_ai_button.setEnabled(False)
-
 
     def set_shadow_label_or_frame(self,w,blur_radius:int=30,x_offset:int=0,y_offset:int=6,color:Union[QColor,Tuple[int,int,int],Tuple[int,int ,int,int],str]=(0,0,0),shadow:str="medium",enabled:bool=True,cache:bool=True,spread:float=0.0,glow:bool=False,color_scheme:str="auto") -> None:
         if w is None:
@@ -808,9 +764,6 @@ class chat_bot_ai(QMainWindow):
         if hasattr(w,'setProperty'):
             w.setProperty('shadow_metadata' ,{'blur':blur_radius,'opacity':opacity,'glow' : glow,'spread':spread})
 
-
-
-
     def ai_chat_changed(self):
         try:
             edit=self.ai_chat_plainTextEdit
@@ -832,12 +785,10 @@ class chat_bot_ai(QMainWindow):
 
             max_lines=10
 
-
             base_edit_x=15
             base_edit_y=656
             base_edit_w=390
             base_edit_h=50
-
 
             button_x=361
             button_y=661
@@ -881,34 +832,18 @@ class chat_bot_ai(QMainWindow):
             if event.key() in (Qt.Key_Return,Qt.Key_Enter):
                 if event.modifiers() & Qt.ShiftModifier:
                     return False
-
-
                 self.send_user_message()
                 return True
         return super().eventFilter(obj,event)
 
-
-
-
-
-
-
-
     def scroll_position_changed(self,value):
         scrollbar=self.ai_list_view.verticalScrollBar()
-
         maximum=scrollbar.maximum()
-
         if value==0:
             self.auto_scroll_bottom_flag= False
-
-
         elif value==maximum:
             self.auto_scroll_bottom_flag=True
-
-
         else:
-
             self.auto_scroll_bottom_flag=False
 
     def set_svg_icon_and_color(self,widget,svg_path,color,icon_size=None,cache={}):
@@ -916,7 +851,6 @@ class chat_bot_ai(QMainWindow):
 
         if icon_size is None:
             if is_label:
-
                 size=widget.size()
                 if size.width()<=0 or size.height()<=0:
                     size=QSize(24,24)
@@ -978,8 +912,6 @@ class chat_bot_ai(QMainWindow):
             widget.setIcon(icon)
             widget.setIconSize(size)
 
-
-
     def send_user_message(self):
         message=self.ai_chat_plainTextEdit.toPlainText().strip()
         print(f'user enter :{message}')
@@ -1004,7 +936,6 @@ class chat_bot_ai(QMainWindow):
         self.push_a_single_responce(msg)
         self.is_generating_resp=True
 
-
     def chat_bot_thread_final_response_verdict(self,dict_data):
         print(f'chat_bot_thread_final_response_verdict: {dict_data}')
         data=dict_data
@@ -1015,11 +946,8 @@ class chat_bot_ai(QMainWindow):
         self.is_generating_resp=False
         self.send_ai_button.setEnabled(True)
 
-
-
     def chat_bot_thread_error_occurred_verdict(self,msg):
         print(f'chat_bot_thread_error_occurred_verdict: {msg}')
-
 
     def push_a_single_input_label(self,data):
         label= self.create_ai_input_list_label(data)
@@ -1027,17 +955,12 @@ class chat_bot_ai(QMainWindow):
 
     def push_ai_input_label(self,label):
         item=QStandardItem()
-
         size=label.size()
         size.setHeight(size.height()+10)
-
         item.setSizeHint(size)
-
         self.ai_list_model.appendRow(item)
-
         index=self.ai_list_model.indexFromItem(item)
         self.ai_list_view.setIndexWidget(index,label)
-
 
     def create_ai_input_list_label(self,data):
         main_transparent_label_w=400
@@ -1068,11 +991,8 @@ class chat_bot_ai(QMainWindow):
         bubble.setText(data.get('text',''))
         bubble.setAlignment(Qt.AlignTop|Qt.AlignLeft)
 
-
-
         bubble.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         bubble.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
 
         bubble.document().adjustSize()
         doc_height=bubble.document().documentLayout().documentSize().height()
@@ -1082,12 +1002,9 @@ class chat_bot_ai(QMainWindow):
         mini_bottom_distance=5
         mini_gap_from_right=5
 
-        BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-        copy_svg_path=os.path.join(BASE_DIR,"svg_icons","chat_copy.svg")
-        edit_svg_path=os.path.join(BASE_DIR,"svg_icons","edit.svg")
-
-
+        # Use self.BASE_DIR
+        copy_svg_path=os.path.join(self.BASE_DIR,"svg_icons","chat_copy.svg")
+        edit_svg_path=os.path.join(self.BASE_DIR,"svg_icons","edit.svg")
 
         common_y=final_h-mini_icon_h-mini_bottom_distance
         x1 =int(bubble.geometry().width()-mini_icon_h*2-l_r_padding*1.4-mini_gap_from_right)
@@ -1096,8 +1013,6 @@ class chat_bot_ai(QMainWindow):
         copy_button.setStyleSheet('QPushButton { background: transparent; border: none; border-radius:5px;} QPushButton:hover { background: rgba(0, 0, 0, 30); } QPushButton:pressed { background: rgba(255, 255, 255, 60); }')
         copy_button.setFixedSize(mini_icon_h,mini_icon_h)
         self.set_svg_icon_and_color(copy_button,copy_svg_path,"#000000",15)
-
-
 
         x2=bubble.geometry().width() - mini_icon_h - l_r_padding-mini_gap_from_right
         edit_button=QPushButton(bubble)
@@ -1108,7 +1023,6 @@ class chat_bot_ai(QMainWindow):
 
         copy_button.setCursor(Qt.PointingHandCursor)
         edit_button.setCursor(Qt.PointingHandCursor)
-
 
         transparent_bg_main.setFixedHeight(bubble.height())
         transparent_bg_main.setFixedWidth(main_transparent_label_w)
@@ -1125,18 +1039,14 @@ class chat_bot_ai(QMainWindow):
             edit_button.show()
             copy_button.show()
 
-
         def hide_inside_buttons(event):
             edit_button.hide()
             copy_button.hide()
 
-
         bubble.enterEvent=show_inside_buttons
         bubble.leaveEvent=hide_inside_buttons
 
-
         return transparent_bg_main
-
 
     def create_edit_label(self,data,full_label_height):
         main_transparent_label_w = 400
@@ -1253,8 +1163,6 @@ class chat_bot_ai(QMainWindow):
 
         new_transaprent_bg_label.setFixedSize(min_max_width_bubble,new_height)
 
-
-
         cancel_button.clicked.connect(lambda:self.cancel_edit_button_clicked(data,input_area_plainTextEdit.toPlainText().strip()))
         save_button.clicked.connect(lambda:self.save_edit_button_clicked(data ,input_area_plainTextEdit.toPlainText().strip()))
 
@@ -1297,17 +1205,9 @@ class chat_bot_ai(QMainWindow):
             model_index=self.ai_list_model.index(index,0)
             self.ai_list_view.setIndexWidget(model_index,label)
 
-
     def input_edit_button_clicked(self,data,full_label_height):
         print(f'user clicked {full_label_height} whcih is at {data["index"]} index')
         self.push_a_single_edit_label(data,full_label_height)
-
-
-
-
-
-
-
 
     def cancel_edit_button_clicked(self,data,new_text):
         print(f'cancel_edit_button_clicked : {data} | new_text : {new_text}')
@@ -1315,13 +1215,11 @@ class chat_bot_ai(QMainWindow):
         original_label=self.create_ai_input_list_label(data)
         self.replace_label_at_index(original_label,data['index'])
 
-
     def save_edit_button_clicked(self,data,new_text):
         print(f'save_edit_button_clicked : data = {data} | new_text : {new_text}')
         if self.is_generating_resp:
             print('please wait while we are still egnrating')
             return
-
 
         self.chat_bot_thread_obj.send_message({'text':new_text,'index':data['index'],'is_special_case':True})
         new_label=self.create_ai_input_list_label({'text':new_text,'index':data['index'],'is_special_case' :True,'is_saved':True})
@@ -1330,31 +1228,24 @@ class chat_bot_ai(QMainWindow):
 
     def replace_label_at_index(self,label,index):
         if index < self.ai_list_model.rowCount():
-
-
             item=self.ai_list_model.item(index)
             if item is None:
                 item= QStandardItem()
                 self.ai_list_model.insertRow(index,item)
             else:
-
                 old_index=self.ai_list_model.index(index,0)
                 if old_index.isValid():
                     old_widget=self.ai_list_view.indexWidget(old_index)
                     if old_widget:
-
                         old_widget.deleteLater()
-
 
             size=label.size()
             size.setHeight(size.height()+10)
             item.setSizeHint(size)
 
-
             model_index=self.ai_list_model.index(index,0)
             self.ai_list_view.setIndexWidget(model_index,label)
         else:
-
             while self.ai_list_model.rowCount()<=index:
                 self.ai_list_model.appendRow(QStandardItem())
 
@@ -1369,11 +1260,11 @@ class chat_bot_ai(QMainWindow):
 
             model_index=self.ai_list_model.index(index,0)
             self.ai_list_view.setIndexWidget(model_index,label)
-    def input_copy_button_clicked(self,data,btn):
-        BASE_DIR= os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-        copy_svg_path= os.path.join(BASE_DIR,"svg_icons","chat_copy.svg")
-        tick_svg_path=os.path.join(BASE_DIR,"svg_icons","tick.svg")
+    def input_copy_button_clicked(self,data,btn):
+        # Use self.BASE_DIR
+        copy_svg_path= os.path.join(self.BASE_DIR,"svg_icons","chat_copy.svg")
+        tick_svg_path=os.path.join(self.BASE_DIR,"svg_icons","tick.svg")
 
         if data.get('is_resp',False):
             doc=QTextDocument()
@@ -1392,46 +1283,30 @@ class chat_bot_ai(QMainWindow):
         self.set_svg_icon_and_color(btn,copy_svg_path,"#000000")
         btn.setEnabled(True)
 
-
-
-
-
-
-
-
-
-
     def push_a_single_responce(self,data):
         label=self.create_responce_label(data)
         self.push_respoce_label(label,data['index'])
 
     def push_respoce_label(self,label,index):
         if index < self.ai_list_model.rowCount():
-
-
             item=self.ai_list_model.item(index)
             if item is None:
                 item=QStandardItem()
                 self.ai_list_model.insertRow(index,item)
             else:
-
                 old_index=self.ai_list_model.index(index,0)
                 if old_index.isValid():
                     old_widget=self.ai_list_view.indexWidget(old_index)
                     if old_widget:
-
                         old_widget.deleteLater()
-
 
             size=label.size()
             size.setHeight(size.height()+10)
             item.setSizeHint(size)
 
-
             model_index=self.ai_list_model.index(index,0)
             self.ai_list_view.setIndexWidget(model_index,label)
         else:
-
             while self.ai_list_model.rowCount()<=index:
                 self.ai_list_model.appendRow(QStandardItem())
 
@@ -1446,11 +1321,6 @@ class chat_bot_ai(QMainWindow):
 
             model_index=self.ai_list_model.index(index,0)
             self.ai_list_view.setIndexWidget(model_index,label)
-
-
-
-
-
 
     def strip_copy_buttons(self,html,code_blocks_out):
 
@@ -1479,33 +1349,22 @@ class chat_bot_ai(QMainWindow):
         try:
             document=bubble.document()
 
-            BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-            copy_svg_path=os.path.join(BASE_DIR,"svg_icons","chat_copy.svg")
-            tick_svg_path=os.path.join(BASE_DIR,"svg_icons","tick.svg")
+            # Use self.BASE_DIR
+            copy_svg_path=os.path.join(self.BASE_DIR,"svg_icons","chat_copy.svg")
+            tick_svg_path=os.path.join(self.BASE_DIR,"svg_icons","tick.svg")
 
             for i,code_text in enumerate(code_blocks):
                 marker = f"§§COPY_MARK_{i}§§"
-
                 cursor=document.find(marker)
-
                 if cursor.isNull():
                     print(f"[WARN] Marker not found in document: {marker}")
                     continue
 
-
-
-
-
-
-
                 rect=bubble.cursorRect(cursor)
-
                 btn=QPushButton(bubble)
                 btn.setIconSize(QSize(16,16))
                 btn.setFixedSize(28 ,28)
                 btn.setCursor(Qt.PointingHandCursor)
-
                 self.set_svg_icon_and_color(btn,copy_svg_path,"#ffffff")
 
                 btn.setStyleSheet("""
@@ -1527,12 +1386,11 @@ class chat_bot_ai(QMainWindow):
 
                 btn_x= content_width - btn.width() - 6
                 btn_y=rect.top() + 4
-
                 btn.move(btn_x,btn_y)
                 btn.show()
                 btn.raise_()
 
-                btn.clicked.connect(lambda checked,text=code_text,b=btn,copy_p=copy_svg_path,tick_p=tick_svg_path:self._copy_code_to_clipboard(text,b,copy_p,tick_p))
+                btn.clicked.connect(lambda checked,text=code_text,b=btn,copy_p=copy_svg_path,tick_p=tick_svg_path:self._copy_code_to_clipboard__(text,b,copy_p,tick_p))
 
         except Exception:
             import traceback
@@ -1550,8 +1408,6 @@ class chat_bot_ai(QMainWindow):
     def reset_copy_icon(self,btn,copy_svg_path):
         self.set_svg_icon_and_color(btn,copy_svg_path,"#ffffff")
         btn.setEnabled(True)
-
-
 
     def create_responce_label(self,data):
         global resp_ss
@@ -1607,7 +1463,6 @@ class chat_bot_ai(QMainWindow):
         bubble.setMinimumHeight(bubble_height)
         bubble.setMaximumHeight(bubble_height)
 
-
         if code_blocks:
             self.add_copy_buttons(bubble,code_blocks,content_width)
 
@@ -1627,11 +1482,10 @@ class chat_bot_ai(QMainWindow):
             mini_bottom_distance=10
             mini_gap_from_left=5
 
-            BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-            copy_svg_path=os.path.join(BASE_DIR,"svg_icons","chat_copy.svg")
-            retry_svg_path=os.path.join(BASE_DIR,"svg_icons","retry.svg")
-            share_svg_path=os.path.join(BASE_DIR,"svg_icons","share.svg")
+            # Use self.BASE_DIR
+            copy_svg_path=os.path.join(self.BASE_DIR,"svg_icons","chat_copy.svg")
+            retry_svg_path=os.path.join(self.BASE_DIR,"svg_icons","retry.svg")
+            share_svg_path=os.path.join(self.BASE_DIR,"svg_icons","share.svg")
 
             common_y=final_h - mini_icon_h - mini_bottom_distance
             x1=l_r_padding
@@ -1648,7 +1502,6 @@ class chat_bot_ai(QMainWindow):
             retry_button.setFixedSize(mini_icon_h,mini_icon_h)
             self.set_svg_icon_and_color(retry_button,retry_svg_path,"#000000",15)
 
-
             x3 =l_r_padding+mini_icon_h*2+mini_gap_from_left*2
             share_button=QPushButton(bubble)
             share_button.move(x3,common_y)
@@ -1656,12 +1509,9 @@ class chat_bot_ai(QMainWindow):
             share_button.setFixedSize(mini_icon_h,mini_icon_h)
             self.set_svg_icon_and_color(share_button,share_svg_path , "#000000",15)
 
-
-
             copy_button.setCursor(Qt.PointingHandCursor)
             retry_button.setCursor(Qt.PointingHandCursor)
             share_button.setCursor(Qt.PointingHandCursor)
-
 
             data_=data
             data_['text']=cleaned_html
@@ -1703,7 +1553,6 @@ class chat_bot_ai(QMainWindow):
         doc.setHtml(data.get("text",""))
         resp=doc.toPlainText().strip()
 
-
         report_id=secrets.token_hex(12)
 
         recipient="support@sayoLabs.com"
@@ -1738,8 +1587,6 @@ class chat_bot_ai(QMainWindow):
 
         webbrowser.open(gmail_url)
 
-
-
     def retry_resp_button_clicked(self,data):
         print(f'retry_resp_button_clicked : data={data}')
         data['index']=data['index']-1
@@ -1747,8 +1594,6 @@ class chat_bot_ai(QMainWindow):
         txt=f"regenerate response for \'{data.get('querry', '')}\'"
         data['text']=txt
         self.chat_bot_thread_obj.retry_send_message(data)
-
-
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
@@ -1761,5 +1606,3 @@ if __name__=="__main__":
     widget.showMaximized()
 
     sys.exit(app.exec())
-    
-    
