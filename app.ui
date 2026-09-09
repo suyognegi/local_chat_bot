@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1713</width>
+    <height>876</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>1270</x>
+      <y>230</y>
+      <width>351</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;San Francisco Giants&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;It looks like you might have meant to type &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SFG&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; (San Francisco Giants), &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SFF&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; (San Francisco Fog/Files), or perhaps &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SFG&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; (San Francisco Giants). If you meant &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SFG&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;, the San Francisco Giants are a Major League Baseball team. If you meant something else, let me know!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>80</y>
+      <width>501</width>
+      <height>771</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>401</width>
+       <height>721</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#f6f7f8;
+border-radius:15px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="white_bg_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>401</width>
+       <height>673</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#fefefe;
+border-radius:15px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>19</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #111827;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 14px;
+    font-weight: 600;
+    background: transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string>Uou</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>36</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #6B7280;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 11px;
+    background: transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string>AI Assitant by </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>38</y>
+       <width>47</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>154</x>
+       <y>710</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #8A94A6;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 9px;
+    background: transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string>Powered by</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>203</x>
+       <y>711</y>
+       <width>55</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QListView" name="ai_list_view">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>401</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QListView {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+QListView::item {
+    background: white;
+    border: none;
+}
+
+QListView::item:hover {
+    background: white;
+}
+
+QListView::item:selected {
+    background: white;
+    border: none;
+}</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="www__">
+     <property name="geometry">
+      <rect>
+       <x>24</x>
+       <y>19</y>
+       <width>33</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QFrame" name="no_chat_frame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>401</width>
+       <height>551</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTextBrowser" name="static_textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>381</width>
+        <height>271</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:21pt; font-weight:696; color:#171717;&quot;&gt;Free, Private, Uncensored,&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:22pt; font-weight:696; color:#171717;&quot;&gt;Untracked AI Chat&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:25pt; font-weight:696; color:#77777f;&quot;&gt;Nobody's Watching&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:25pt; font-weight:696; color:#0f6b78; vertical-align:super;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:12pt; color:#77777f;&quot;&gt;No account. No tracking. No memory. No filters.&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI,Arial,sans-serif'; font-size:12pt; color:#77777f;&quot;&gt;Ask anything, anonymously, in 46 languages.&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ask_pushButton_1">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>320</y>
+        <width>370</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #E1E1E6;
+    border-radius: 12px;
+    padding: 0px 16px;
+    text-align: left;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+QPushButton:hover {
+    background-color: #FAFAFB;
+    border: 1px solid #D4D4DA;
+}
+
+QPushButton:pressed {
+    background-color: #F5F5F7;
+    border: 1px solid #B8B8C0;
+}
+
+QPushButton:checked {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #A7A7B2;
+    border-radius: 12px;
+}</string>
+      </property>
+      <property name="text">
+       <string>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ask_pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>380</y>
+        <width>370</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #E1E1E6;
+    border-radius: 12px;
+    padding: 0px 16px;
+    text-align: left;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+QPushButton:hover {
+    background-color: #FAFAFB;
+    border: 1px solid #D4D4DA;
+}
+
+QPushButton:pressed {
+    background-color: #F5F5F7;
+    border: 1px solid #B8B8C0;
+}
+
+QPushButton:checked {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #A7A7B2;
+    border-radius: 12px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Is open ai trcaking me ?</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ask_pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>440</y>
+        <width>370</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #E1E1E6;
+    border-radius: 12px;
+    padding: 0px 16px;
+    text-align: left;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+QPushButton:hover {
+    background-color: #FAFAFB;
+    border: 1px solid #D4D4DA;
+}
+
+QPushButton:pressed {
+    background-color: #F5F5F7;
+    border: 1px solid #B8B8C0;
+}
+
+QPushButton:checked {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #A7A7B2;
+    border-radius: 12px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Is open ai trcaking me ?</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ask_pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>500</y>
+        <width>370</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #E1E1E6;
+    border-radius: 12px;
+    padding: 0px 16px;
+    text-align: left;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+QPushButton:hover {
+    background-color: #FAFAFB;
+    border: 1px solid #D4D4DA;
+}
+
+QPushButton:pressed {
+    background-color: #F5F5F7;
+    border: 1px solid #B8B8C0;
+}
+
+QPushButton:checked {
+    background-color: #FFFFFF;
+    color: #3F3F46;
+    border: 1px solid #A7A7B2;
+    border-radius: 12px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Is open ai trcaking me ?</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>18</x>
+        <y>294</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: transparent;
+    color: #6B7280;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}</string>
+      </property>
+      <property name="text">
+       <string>TRY ASKING</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="chat_suffle_button">
+      <property name="geometry">
+       <rect>
+        <x>306</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: transparent;
+    border: none;
+    color: #6B7280;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 2px 6px;
+}
+
+QPushButton:hover {
+    color: #374151;
+}
+
+QPushButton:pressed {
+    color: #0F6B78;
+}</string>
+      </property>
+      <property name="text">
+       <string>Shuffle</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPlainTextEdit" name="ai_chat_plainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>656</y>
+       <width>390</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit {
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #C8CEDA;
+
+    border-radius: 21px;
+
+    padding: 10px 50px 10px 14px;
+
+    color: #172033;
+
+    font-family: &quot;Segoe UI&quot;;
+
+    font-size: 14px;
+
+    selection-background-color: #6246EA;
+
+    selection-color: #FFFFFF;
+
+    outline: none;
+}
+
+QPlainTextEdit:focus {
+
+    border: 1px solid #B8B2FF;
+
+    background-color: #FFFFFF;
+}
+
+
+/* Scrollbar */
+
+QPlainTextEdit QScrollBar:vertical {
+
+    width: 3px;
+
+    background: transparent;
+
+    border: none;
+
+    margin: 4px 1px 4px 0px;
+}
+
+QPlainTextEdit QScrollBar::handle:vertical {
+
+    background-color: #D9DEE8;
+
+    border: none;
+
+    border-radius: 1px;
+
+    min-height: 20px;
+}
+
+QPlainTextEdit QScrollBar::handle:vertical:hover {
+
+    background-color: #C8CEDA;
+}
+
+QPlainTextEdit QScrollBar::add-line:vertical,
+QPlainTextEdit QScrollBar::sub-line:vertical {
+
+    height: 0px;
+
+    border: none;
+
+    background: transparent;
+}
+
+QPlainTextEdit QScrollBar::add-page:vertical,
+QPlainTextEdit QScrollBar::sub-page:vertical {
+
+    background: transparent;
+
+    border: none;
+}</string>
+     </property>
+     <property name="documentTitle">
+      <string/>
+     </property>
+     <property name="plainText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="send_ai_button">
+     <property name="geometry">
+      <rect>
+       <x>361</x>
+       <y>661</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #0F6B78;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #0C5A66;
+}
+
+QPushButton:pressed {
+    background-color: #094A54;
+}
+
+QPushButton:disabled {
+    background-color: #B8C4C6;
+    color: #E8E8E8;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../svg_icons/send2.svg</normaloff>../svg_icons/send2.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
