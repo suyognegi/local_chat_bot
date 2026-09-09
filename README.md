@@ -14,3 +14,7 @@ python main.py
 <br>
 
 btw have ball knowledge of python (i meant have python on your system & have venv activated
+
+
+
+<!--Remind (me) : Later add auto retry after failing + auto reconnect >
